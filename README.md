@@ -16,7 +16,7 @@ receivers:
     webhook_configs:
       - url: "http://alert-forwarder/alert?platform=feishu&url=https://open.larksuite.com/open-apis/bot/v2/hook/xxx"
         send_resolved: true
-  - name: "feishu"
+  - name: "telegram-alert"
     webhook_configs:
-      - url: "http://alert-forwarder/alert?platform=feishu&url=https://open.larksuite.com/open-apis/bot/v2/hook/xxx"
+      - url: "http://alert-forwarder/alert?platform=telegram&telegram_token=xxxx:xxx&telegram_chat_id=xxxx"
         send_resolved: true
