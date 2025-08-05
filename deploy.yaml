@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alert-forwarder-deployment
+  labels:
+    app: alert-forwarder
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: alert-forwarder
+  template:
+    metadata:
+      labels:
+        app: alert-forwarder
+    spec:
+      containers:
+      - name: alert-forwarder
+        image: tobbyqq/alert_forwarder:latest
+        ports:
+        - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: alert-forwarder
+  labels:
+    app: alert-forwarder
+spec:
+  selector:
+    app: alert-forwarder
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 5000
+  type: ClusterIP
